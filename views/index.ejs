@@ -1,0 +1,35 @@
+<%include partials/header%>
+
+<div class="ui main text container">
+	<div class="ui huge header">Welcome to BlogApp</div>
+	<div class="ui top attached segment">
+		<div class="ui divided items">
+			<%blogs.forEach(function(blog){%>
+			<div class="item">
+				<div class="image medium circular">
+					<p class="ui blue ribbon label"><%=blog.created.toDateString()%></p>
+					<img src="<%=blog.image%>">
+				</div>
+				<div class="content">
+					<a class="header" href="/blogs/<%=blog.id%>"><%=blog.title%></a>
+					
+					<div class="description">
+						<p><%- blog.body.substring(0,100) + "..."%></p>
+					</div>
+					<div class="extra ">
+						<div class="ui animated button pink basic" tabindex="0">
+						  <div class=" visible content" >Read more</div>
+						  <a class="hidden content" href="/blogs/<%=blog.id%>"><i class="right arrow icon pink"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<%})%>
+		</div>
+	</div>
+</div>
+<h1></h1>
+
+
+
+<%include partials/footer%>
