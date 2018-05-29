@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
-mongoose.connect("mongodb://localhost/blogapp");
+//mongoose.connect("mongodb://localhost/blogapp");
+mongoose.connect("mongodb://blogapp:blogapp@ds137720.mlab.com:37720/blogapp");
 var blogSchema = new mongoose.Schema({
 	title: String,
 	image: String, //{type: String, default: defaultImage.jpg}
