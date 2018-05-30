@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
+const PORT = process.env.PORT || 3001; 
+
 // mongoose.connect("mongodb://localhost/blogapp");
 mongoose.connect("mongodb://blogapp:blogapp@ds233500.mlab.com:33500/blogapp");
 var blogSchema = new mongoose.Schema({
@@ -21,10 +23,14 @@ var blogSchema = new mongoose.Schema({
 });
 var Blog = mongoose.model("Blog", blogSchema);
 // Blog.create({
-// 	title: "Second blog",
-// 	image: "https://www.converse.edu/wp-content/uploads/2015/09/Camps-Banner.jpg",
-// 	body: "My really first blog post!My really first blog post!Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+// 	title: "This is the first blog post (DON'T DELETE, PLEASE)",
+// 	image: "https://media.istockphoto.com/vectors/welcome-sign-vector-id492418686?s=2048x2048",
+// 	body: "Congratulations!<br>This is the first blog on this service. We have a lot to discuss. hope, you enjoy this site)<br>Have a good day.<br><br>Cheers))"
 // });
+
+app.get("/", (req,res) => {
+	res.redirect("/blogs");
+});
 
 //INDEX
 app.get("/blogs", (req, res) => {
@@ -103,7 +109,11 @@ app.delete("/blogs/:id", (req, res) => {
 	})
 });
 
+app.get("*", (req, res) => {
+	res.redirect("/blogs");
+});
 
-app.listen("3001", () => {
+
+app.listen(PORT, () => {
 	console.log("server starts");
 });
