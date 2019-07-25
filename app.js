@@ -34,10 +34,12 @@ app.get("/", (req,res) => {
 
 //INDEX
 app.get("/blogs", (req, res) => {
+	console.log('!!!');
 	Blog.find({}, (err, blogs) => {
 		if( err){
 			console.log(err);
 		} else {
+			console.log(blogs);
 			res.render("index", {blogs});
 		}
 	});
