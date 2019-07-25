@@ -6,15 +6,15 @@
 	<form class="ui form" action="/blogs/<%=blog.id%>?_method=PUT" method="POST">
 		<div class="field">
 			<label>Title</label>
-			<input type="text" name="blog[title]" placeholder="Title" value="<%=blog.title%>">
+			<input type="text" name="blog[title]" placeholder="Title" value="<%=blog.title%>" required>
 		</div>
 		<div class="field">
 			<label>Image</label>
-			<input type="text" name="blog[image]" placeholder="Image URL" value="<%=blog.image%>">
+			<input type="text" name="blog[image]" placeholder="Image URL" value="<%=blog.image%>" required>
 		</div>
 		<div class="field">
 			<label>Blog Content</label>
-			<textarea name="blog[body]" placeholder="Put your text here"><%-blog.body%></textarea>
+			<textarea name="blog[body]" placeholder="Put your text here" required><%-blog.body%></textarea>
 		</div>
 		<button class="ui animated button pink basic" tabindex="0">
 		  <div class="visible content" >SUBMIT</div>
