@@ -14,7 +14,10 @@ app.use(methodOverride("_method"));
 const PORT = process.env.PORT || 3001; 
 
 // mongoose.connect("mongodb://localhost/blogapp");
-mongoose.connect("mongodb://blogapp:blogapp@ds233500.mlab.com:33500/blogapp", { useNewUrlParser: true });
+// mongodb://blogapp:blogapp@ds233500.mlab.com:33500/blogapp
+mongoose.connect(
+	"mongodb+srv://blogapp:blogapp@blogapp.oeq2r.gcp.mongodb.net/blogapp?retryWrites=true&w=majority",
+	{ useNewUrlParser: true });
 var blogSchema = new mongoose.Schema({
 	title: String,
 	image: String, //{type: String, default: defaultImage.jpg}
